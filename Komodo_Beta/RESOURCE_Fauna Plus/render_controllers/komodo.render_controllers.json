@@ -1,0 +1,27 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.komodo": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.komodo_1",
+            "Texture.komodo_2",
+            "Texture.komodo_3",
+            "Texture.komodo_4",
+            "Texture.komodo_black",
+            "Texture.komodo_white",
+            "Texture.komodo_leucistic",
+            "Texture.komodo_albino"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        { "*": "Material.default" }
+
+      ],
+      "textures": [ "Array.skins[query.variant]" ]
+    }
+  }
+}

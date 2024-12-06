@@ -1,0 +1,112 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "ben:komodo",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"komodo_1": "textures/entity/komodo/komodo_1",
+				"komodo_2": "textures/entity/komodo/komodo_2",
+				"komodo_3": "textures/entity/komodo/komodo_3",
+				"komodo_4": "textures/entity/komodo/komodo_4",
+				"komodo_black": "textures/entity/komodo/komodo_black",
+				"komodo_white": "textures/entity/komodo/komodo_white",
+				"komodo_leucistic": "textures/entity/komodo/komodo_leucistic",
+				"komodo_albino": "textures/entity/komodo/komodo_albino"
+			},
+			"geometry": {
+				"default": "geometry.komodo"
+			},
+			"animations": {
+				"life": "animation.komodo.life",
+				"death": "animation.komodo.death",
+
+				"idle_water": "animation.komodo.idle_water",
+				"idle_land": "animation.komodo.idle_land",
+				"idle": "animation.komodo.idle",
+
+
+				"swim": "animation.komodo.swim",
+				"walk": "animation.komodo.walk",
+				"run": "animation.komodo.run",
+				"roar": "animation.komodo.roar",
+				"bite": "animation.komodo.bite",
+				"eat": "animation.komodo.eat",
+				"bite_idle": "animation.komodo.bite_idle",
+				"no_tongue": "animation.komodo.no_tongue",
+				"smell_slow": "animation.komodo.smell_slow",
+				"smell_fast": "animation.komodo.smell_fast",
+				"giant": "animation.komodo.giant",
+				"swim_angle": "animation.marine_iguana.swim_angle",
+				"turning": "animation.komodo.turning",
+				"look": "animation.komodo.look",
+				"baby": "animation.komodo.baby",
+				"sub_adult": "animation.komodo.sub_adult",
+				"general": "controller.animation.komodo.general",
+				"roaring": "controller.animation.komodo.roaring",
+				"eating": "controller.animation.komodo.eating",
+
+
+				"land_or_water": "controller.animation.komodo.land_or_water",
+				"biting_move": "controller.animation.komodo.biting_move",
+				"biting_idle": "controller.animation.komodo.biting_idle",
+				"tongue_move": "controller.animation.komodo.tongue_move",
+				"tongue_idle": "controller.animation.komodo.tongue_idle",
+				"move": "controller.animation.komodo.move"
+			},
+			
+			"enable_attachables": true,
+			"scripts": {
+				"initialize": [
+					"variable.smoothed_turning = 0;",
+					"variable.body_turn = 0;",
+					"variable.smoothed_falling = 0;"
+				],
+				"pre_animation": [
+				"variable.moving = query.modified_move_speed > 0.03 || query.vertical_speed > 0.01;",
+				"variable.pitch = query.body_x_rotation;",
+				"variable.smoothed_turning = variable.smoothed_turning + Math.clamp(query.yaw_speed - variable.smoothed_turning, -10, 10) / 1.5;",
+				"variable.body_turn = variable.body_turn + Math.clamp(-query.body_y_rotation - variable.body_turn, -10, 10) / 1.5;",
+				"variable.smoothed_falling = variable.smoothed_falling + Math.clamp(query.vertical_speed - variable.smoothed_falling, -10, 10) / 10;"
+				],
+				"animate": [
+					{
+					  "baby": "query.is_baby && query.variant == 11"
+					},
+					{
+					  "sub_adult": "query.variant == 12"
+					},
+					{
+					  "giant": "query.variant == 9"
+					},
+					"life",
+					{
+					  "death": "query.is_alive == 0"
+					},
+					"move",
+					"general",
+					"eating",
+					"land_or_water",
+					"biting_move",
+					"biting_idle",
+					"tongue_move",
+					"tongue_idle",
+					"tail_attacking",
+					"roaring"
+				]
+			},
+			"sound_effects": {
+			  "smell": "mob.komodo.smell",
+			  "bite": "mob.komodo.bite",
+			  "roar": "mob.komodo.roar"
+			},
+			"render_controllers": ["controller.render.komodo"],
+			"spawn_egg": {
+				"base_color": "#a88b71",
+				"overlay_color": "#e7d0b2"
+			}
+		}
+	}
+}

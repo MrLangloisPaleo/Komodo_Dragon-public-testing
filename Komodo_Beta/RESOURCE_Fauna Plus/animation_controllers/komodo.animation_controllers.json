@@ -1,0 +1,244 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.komodo.general": {
+      "initial_state": "default",
+      "states": {
+        "idle": {
+          "animations": [
+            {"swim_angle": "variable.moving && !query.is_on_ground  && query.is_in_water"},
+            "turning"
+          ]
+        }
+      }
+    },
+		"controller.animation.komodo.roaring": {
+			"initial_state" : "default",
+			"states" : {
+				"idle" : {
+					"transitions" : [
+						{
+							"roar" : "query.is_angry && variable.attack_time <= 0.0"
+						}
+					]
+				},
+				"roar" : {
+					"animations" : [ "roar", "no_tongue" ],
+					"transitions" : [
+						{
+							"idle" : "!query.is_angry"
+						}
+					]
+				}
+			}
+		},
+    "controller.animation.komodo.eating": {
+      "initial_state": "default",
+      "states": {
+        "idle": {
+          "transitions": [
+            {
+              "eat": "query.is_eating"
+            }
+          ],
+          "blend_transition": 0.2
+        },
+        "eat": {
+          "animations": [ "eat", "no_tongue" ],
+          "transitions": [
+            {
+              "idle": "!query.is_eating"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    },
+
+
+
+    "controller.animation.komodo.biting_move": {
+			"initial_state" : "default",
+			"states" : {
+				"idle" : {
+					"transitions" : [
+						{ 
+							"bite" : "variable.moving && query.is_delayed_attacking == 1"
+						}
+					]
+				},
+				"bite" : {
+					"animations" : [ "bite", "no_tongue" ],
+					"transitions" : [
+						{ 
+							"idle" : "variable.moving && query.is_delayed_attacking == 0"
+						}
+					]
+				}
+			}
+		},
+    "controller.animation.komodo.biting_idle": {
+			"initial_state" : "default",
+			"states" : {
+				"idle" : {
+					"transitions" : [
+						{ 
+							"bite_idle" : "!variable.moving && query.is_delayed_attacking == 1"
+						}
+					]
+				},
+				"bite_idle" : {
+					"animations" : [ "bite_idle", "no_tongue" ],
+					"transitions" : [
+						{ 
+							"idle" : "!variable.moving && query.is_delayed_attacking == 0"
+						}
+					]
+				}
+			}
+		},
+
+
+
+    "controller.animation.komodo.tongue_move": {
+			"initial_state" : "default",
+			"states" : {
+				"idle" : {
+					"animations" : [ "no_tongue" ],
+					"transitions" : [
+						{
+							"smell_fast" : "variable.moving && query.is_sniffing"
+						}
+					]
+				},
+				"smell_fast" : {
+					"animations" : [ "smell_fast" ],
+					"transitions" : [
+						{
+							"idle" : "!query.is_sniffing"
+						}
+					]
+				}
+			}
+    },
+    "controller.animation.komodo.tongue_idle": {
+			"initial_state" : "default",
+			"states" : {
+				"idle" : {
+					"animations" : [ "no_tongue" ],
+					"transitions" : [
+						{
+							"smell_slow" : "!variable.moving && query.is_sniffing"
+						}
+					]
+				},
+				"smell_slow" : {
+					"animations" : [ "smell_slow" ],
+					"transitions" : [
+						{
+							"idle" : "!query.is_sniffing"
+						}
+					]
+				}
+			}
+    },
+
+
+
+    "controller.animation.komodo.land_or_water": {
+      "initial_state": "idle",
+      "states": {
+        "idle": {
+          "animations": ["idle"],
+          "transitions": [
+            {"idle_land": "query.is_on_ground && !query.is_in_water"},
+            {"idle_water": "!query.is_on_ground && query.is_in_water && !variable.moving && query.ground_speed < 0.05"}
+          ],
+          "blend_transition": 0.2
+        },
+        "idle_land": {
+          "animations": [ "idle_land" ],
+          "transitions": [
+            {"idle_water": "!query.is_on_ground && query.is_in_water && !variable.moving && query.ground_speed < 0.05"}
+          ],
+          "blend_transition": 0.2
+        },
+        "idle_water": {
+          "animations": [ "idle_water" ],
+          "transitions": [
+            {"idle_land": "query.is_on_ground && !query.is_in_water"},
+            {"idle": "!query.is_on_ground && query.is_in_water && variable.moving && query.ground_speed > 0.05"}
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    },
+    "controller.animation.komodo.move": {
+      "initial_state": "idle",
+      "states": {
+        "default": {
+          "transitions": [
+            { "idle": "!variable.moving" }
+          ],
+          "blend_transition": 0.2
+        },
+        "idle": {
+          "animations": ["idle", "look"],
+          "transitions": [
+						{ "lay": "query.is_sitting" },
+            { "walk": "variable.moving && !query.is_in_water && query.ground_speed > 0.05" },
+            { "swim": "variable.moving && query.is_in_water && query.ground_speed > 0.05" }
+          ],
+          "blend_transition": 0.2
+        },
+        "lay": {
+          "animations": [ "lay", "idle_nest" ],
+          "transitions": [
+            { "rise": "!query.is_sitting" }
+          ],
+          "blend_transition": 0.5
+        },
+        "nest": {
+          "animations": [ "nest", "idle_nest", "look" ],
+          "transitions": [
+            { "rise": "!query.is_sitting" }
+          ],
+          "blend_transition": 0.5
+        },
+        "rise": {
+          "animations": [ "rise", "idle_nest" ],
+          "transitions": [
+            { "lay": "query.is_sitting" },
+            { "walk": "variable.moving" }
+          ],
+          "blend_transition": 0.5
+        },
+        "walk": {
+          "animations": ["walk", "look"],
+          "transitions": [
+            { "idle": "!variable.moving" },
+            { "swim": "variable.moving && query.is_in_water && query.ground_speed > 0.05" },
+            { "run": "!query.is_in_water && query.ground_speed > 2.75" }
+          ],
+          "blend_transition": 0.2
+        },
+        "run": {
+          "animations": ["run", "look"],
+          "transitions": [
+            { "walk": "variable.moving && !query.is_in_water && query.ground_speed < 2.75" },
+            { "swim": "variable.moving && query.is_in_water" }
+          ],
+          "blend_transition": 0.2
+        },
+        "swim": {
+          "animations": ["swim"],
+          "transitions": [
+            { "idle": "!variable.moving && query.ground_speed < 0.05" },
+            { "walk": "variable.moving && !query.is_in_water && query.ground_speed > 0.05" }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}

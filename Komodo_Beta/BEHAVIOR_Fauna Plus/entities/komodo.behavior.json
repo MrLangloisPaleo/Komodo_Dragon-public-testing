@@ -1,0 +1,683 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "ben:komodo",
+      "spawn_category": "creature",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+
+    "component_groups": {
+      "komodo_1": {
+        "minecraft:variant": { "value": 0 }
+      },
+      "komodo_2": {
+        "minecraft:variant": { "value": 1 }
+      },
+      "komodo_3": {
+        "minecraft:variant": { "value": 2 }
+      },
+      "komodo_4": {
+        "minecraft:variant": { "value": 3 }
+      },
+      "komodo_black": {
+        "minecraft:variant": { "value": 4 }
+      },
+      "komodo_white": {
+        "minecraft:variant": { "value": 5 }
+      },
+      "komodo_leucistic": {
+        "minecraft:variant": { "value": 6 }
+      },
+      "komodo_albino": {
+        "minecraft:variant": { "value": 7 }
+      },
+
+
+
+      "normal_size": {
+        "minecraft:scale": {
+          "value": 1.0
+        },
+        "minecraft:movement": {
+          "value": 0.27
+        },
+        "minecraft:variant": { "value": 8 },
+        "minecraft:collision_box": {
+          "width": 0.8,
+          "height": 0.9
+        },
+        "minecraft:attack": {
+          "damage": 4,
+          "effect_duration": 10,
+          "effect_name": "wither"
+        },
+        "minecraft:health": {
+          "value": 25
+        }
+      },
+
+
+
+      "giant": {
+        "minecraft:scale": {
+          "value": 1.25
+        },
+        "minecraft:movement": {
+          "value": 0.28
+        },
+        "minecraft:variant": { "value": 9 },
+        "minecraft:collision_box": {
+          "width": 1.3,
+          "height": 1.4
+        },
+        "minecraft:attack": {
+          "damage": 6,
+          "effect_duration": 10,
+          "effect_name": "wither"
+        },
+        "minecraft:health": {
+          "value": 35
+        }
+      },
+
+
+
+      "small_size": {
+        "minecraft:scale": {
+          "value": 0.85
+        },
+        "minecraft:movement": {
+          "value": 0.27
+        },
+        "minecraft:variant": { "value": 10 },
+        "minecraft:collision_box": {
+          "width": 0.7,
+          "height": 0.8
+        },
+        "minecraft:attack": {
+          "damage": 3,
+          "effect_duration": 10,
+          "effect_name": "wither"
+        },
+        "minecraft:health": {
+          "value": 20
+        }
+      },
+
+
+      "komodo_baby": {
+        "minecraft:behavior.panic": {
+          "ignore_mob_damage": false,
+          "prefer_water": true,
+          "speed_multiplier": 2,
+          "priority": 2
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 3,
+          "must_see": true,
+          "must_reach": true,
+          "reselect_targets": true,
+          "target_search_height": 60.0,
+          "within_radius": 60.0,
+          "target_sneak_visibility_multiplier": 0.8,
+          "must_see_forget_duration": 10.0,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "any_of": [
+                      { "test": "is_family", "operator": "equals", "subject": "other", "value": "chicken" },
+                      { "test": "is_family", "operator": "equals", "subject": "other", "value": "rabbit" },
+                      { "test": "is_family", "operator": "equals", "subject": "other", "value": "cat" },
+                      { "test": "is_family", "operator": "equals", "subject": "other", "value": "silverfish" },
+                      { "test": "is_family", "operator": "equals", "subject": "other", "value": "endermite" },
+                      { "test": "is_family", "operator": "equals", "subject": "other", "value": "frog" },
+                      { "test": "is_family", "operator": "equals", "subject": "other", "value": "axolotl" }
+                    ]
+                  }
+                ]
+              },
+              "max_dist": 10
+            }
+          ]
+        },
+        "minecraft:is_baby": {
+        },
+        "minecraft:variant": { "value": 11 },
+        "minecraft:movement": {
+          "value": 0.3
+        },
+        "minecraft:collision_box": {
+          "width": 0.7,
+          "height": 0.8
+        },
+        "minecraft:behavior.tempt": {
+          "priority": 1,
+          "within_radius": 40,
+          "speed_multiplier": 1.1,
+          "can_tempt_vertically": true,
+          "items": ["rabbit"]
+        },
+        "minecraft:scale_by_age": {"start_scale": 0.30, "end_scale": 0.60},
+        "minecraft:ageable": {
+          "duration": 200,
+          "feed_items": "rabbit",
+          "grow_up": {
+            "event": "minecraft:baby_to_teen",
+            "target": "self"
+          }
+        },
+        "minecraft:knockback_resistance": {
+          "value": 0,
+          "max": 0
+        },
+        "minecraft:attack": {
+          "damage": 1
+        },
+        "minecraft:health": {
+          "value": 10
+        }
+      },
+
+
+      "komodo_sub_adult": {
+        "minecraft:on_target_acquired": {
+          "event": "be_angry",
+          "target": "self"
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 3,
+          "must_see": true,
+          "must_reach": true,
+          "reselect_targets": true,
+          "target_search_height": 60.0,
+          "within_radius": 60.0,
+          "target_sneak_visibility_multiplier": 0.8,
+          "must_see_forget_duration": 10.0,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "any_of": [
+                      { "test": "is_family", "operator": "equals", "subject": "other", "value": "chicken" },
+                      { "test": "is_family", "operator": "equals", "subject": "other", "value": "rabbit" },
+                      { "test": "is_family", "operator": "equals", "subject": "other", "value": "cat" },
+                      { "test": "is_family", "operator": "equals", "subject": "other", "value": "silverfish" },
+                      { "test": "is_family", "operator": "equals", "subject": "other", "value": "endermite" },
+                      { "test": "is_family", "operator": "equals", "subject": "other", "value": "frog" },
+                      { "test": "is_family", "operator": "equals", "subject": "other", "value": "axolotl" }
+                    ]
+                  }
+                ]
+              },
+              "max_dist": 20
+            }
+          ]
+        },
+        "minecraft:variant": { "value": 11 },
+        "minecraft:movement": {
+          "value": 0.25
+        },
+        "minecraft:collision_box": {
+          "width": 0.8,
+          "height": 0.9
+        },
+        "minecraft:behavior.tempt": {
+          "priority": 1,
+          "within_radius": 40,
+          "speed_multiplier": 1.1,
+          "can_tempt_vertically": true,
+          "items": ["chicken"]
+        },
+        "minecraft:scale_by_age": {"start_scale": 0.60, "end_scale": 0.80},
+        "minecraft:ageable": {
+          "duration": 200,
+          "feed_items": "chicken",
+          "grow_up": {
+            "event": "minecraft:teen_to_adult",
+            "target": "self"
+          }
+        },
+        "minecraft:knockback_resistance": {
+          "value": 0.5,
+          "max": 0.5
+        },
+        "minecraft:attack": {
+          "damage": 3
+        },
+        "minecraft:health": {
+          "value": 15
+        }
+      },
+
+
+
+      "komodo_adult": {
+        "minecraft:on_target_acquired": {
+          "event": "be_angry",
+          "target": "self"
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 3,
+          "must_see": true,
+          "must_reach": true,
+          "reselect_targets": true,
+          "target_search_height": 60.0,
+          "within_radius": 60.0,
+          "target_sneak_visibility_multiplier": 0.8,
+          "must_see_forget_duration": 10.0,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "any_of": [
+                      { "test": "is_family", "operator": "not", "subject": "other", "value": "komodo" }
+                    ]
+                  }
+                ]
+              },
+              "max_dist": 30
+            },
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "any_of": [
+                      { "test": "has_component", "subject": "other", "operator": "equals", "value": "minecraft:is_baby" }
+                    ]
+                  }
+                ]
+              },
+              "max_dist": 10
+            }
+          ]
+        },
+        "minecraft:experience_reward": {
+          "on_bred": "Math.Random(1,7)",
+          "on_death": "query.last_hit_by_player ? Math.Random(1,3) : 0"
+        },
+        "minecraft:behavior.breed": {
+          "priority": 0,
+          "speed_multiplier": 1.0
+        },
+        "minecraft:behavior.tempt": {
+          "priority": 1,
+          "within_radius": 40,
+          "speed_multiplier": 1.1,
+          "can_tempt_vertically": true,
+          "items": ["rotten_flesh"]
+        },
+        "minecraft:knockback_resistance": {
+          "value": 1,
+          "max": 1
+        },
+        "minecraft:breedable": {
+          "blend_attributes": true,
+          "extra_baby_chance": 1,
+          "require_tame": false,
+          "breed_items": "rotten_flesh",
+          "breeds_with": {
+            "mate_type": "ben:komodo",
+            "baby_type": "ben:komodo",
+            "breed_event": {
+              "event": "minecraft:entity_born",
+              "target": "baby"
+            }
+          }
+        }
+      },
+
+
+      "angry": {
+        "minecraft:angry": {
+          "duration": 25,
+          "broadcast_anger": true,
+          "broadcast_targets": ["ben:komodo"],
+          "broadcast_filters": [
+            { "test": "has_component", "subject": "other", "operator": "not", "value": "minecraft:is_baby" },
+            { "test": "is_family", "operator": "equals", "subject": "other", "value": "komodo" }
+          ],
+          
+          "broadcast_range": 20,
+          "calm_event": {
+            "event": "be_calm",
+            "target": "self"
+          }
+        },
+        "minecraft:on_target_acquired": {
+        }
+      }
+
+
+
+    },
+
+    "components": {
+			"minecraft:behavior.leap_at_target": {
+				"priority": 3,
+				"yd": 0.3,
+				"must_be_on_ground": true,
+				"target_dist": 0.3
+			},
+			"minecraft:behavior.ocelotattack": {
+				"priority": 2,
+				"cooldown_time": 2,
+				"x_max_rotation": 30,
+				"y_max_head_rotation": 30,
+				"max_distance": 25,
+				"max_sneak_range": 20,
+				"max_sprint_range": 5,
+				"reach_multiplier": 2,
+				"sneak_speed_multiplier": 0.7,
+				"sprint_speed_multiplier": 1.6,
+				"walk_speed_multiplier": 0.7
+			},
+			"minecraft:behavior.pickup_items": {
+			  "priority": 3,
+			  "max_dist": 3,
+        "track_target": true,
+			  "goal_radius": 2,
+			  "speed_multiplier": 0.5
+			},
+			"minecraft:behavior.eat_carried_item": {
+			  "priority": 12,
+			  "delay_before_eating": 0
+			},
+			"minecraft:behavior.equip_item": {
+			  "priority": 2
+			},
+			"minecraft:shareables": {
+			  "singular_pickup": true,
+			  "all_items": false,
+			  "all_items_max_amount": 100,
+			  "items": [
+				{ "item": "minecraft:beef", "priority": 0, "max_amount": 100 },
+				{ "item": "minecraft:chicken", "priority": 0, "max_amount": 100 },
+				{ "item": "minecraft:clownfish", "priority": 0, "max_amount": 100 },
+				{ "item": "minecraft:cooked_beef", "priority": 0, "max_amount": 100 },
+				{ "item": "minecraft:cooked_chicken", "priority": 0, "max_amount": 100 },
+				{ "item": "minecraft:cooked_porkchop", "priority": 0, "max_amount": 100 },
+				{ "item": "minecraft:cooked_rabbit", "priority": 0, "max_amount": 100 },
+				{ "item": "minecraft:rotten_flesh", "priority": 0, "max_amount": 100 },
+				{ "item": "minecraft:muttonCooked", "priority": 0, "max_amount": 100 },
+				{ "item": "minecraft:muttonRaw", "priority": 0, "max_amount": 100 },
+				{ "item": "minecraft:porkchop", "priority": 0, "max_amount": 100 },
+				{ "item": "minecraft:rabbit", "priority": 0, "max_amount": 100 }
+			  ]
+			},
+			"minecraft:damage_sensor": {
+			  "triggers": [
+				{
+				  "on_damage": {
+					"filters": {
+					  "test": "is_block",
+					  "subject": "block",
+					  "value": "minecraft:sweet_berry_bush"
+					}
+				  },
+				  "deals_damage": false
+				},
+				{
+					"cause": "fall",
+					"deals_damage": false
+				},
+				{
+					"cause": "freezing",
+					"deals_damage": false
+				}
+			  ]
+			},
+      "minecraft:variable_max_auto_step": {
+        "base_value": 1.7,
+        "controlled_value": 1.7,
+        "jump_prevented_value": 0.7
+      },
+      "minecraft:behavior.sniff": {
+        "priority": 12,
+        "duration": 7.5,
+        "sniffing_radius": 40.0,
+        "cooldown_range": [ 2.0, 5.0 ]
+      },
+      "minecraft:follow_range": {"min": 20, "max": 20},
+      "minecraft:is_hidden_when_invisible": {
+      },
+      "minecraft:type_family": {
+        "family": [ "komodo", "mob" ]
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_water": true,
+        "breathes_air": true,
+        "generates_bubbles": false
+      },
+      "minecraft:nameable": {
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": {
+              "test": "in_lava",
+              "subject": "self",
+              "operator": "==",
+              "value": true
+            },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:navigation.generic": {
+        "is_amphibious": true,
+        "can_path_over_water": true,
+        "can_swim": true,
+        "can_walk": true,
+        "can_sink": false,
+        "can_break_doors": true,
+        "avoid_damage_blocks": true
+      },
+      "minecraft:movement.amphibious": {
+        "max_turn": 15.0
+      },
+      "minecraft:underwater_movement": {
+        "value": 0.2
+      },
+      "minecraft:jump.static": {
+      },
+      "minecraft:physics": {
+      },
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:leashable": {
+        "soft_distance": 6.0,
+        "hard_distance": 4.0,
+        "max_distance": 12.0
+      },
+      "minecraft:despawn": {
+        "despawn_from_distance": {}
+      },
+      "minecraft:combat_regeneration": {"regeneration_duration": 50, "apply_to_family": true, "apply_to_self": true},
+      "minecraft:game_event_movement_tracking": {"emit_swim": true, "emit_flap": true, "emit_move": true},
+      "minecraft:behavior.delayed_attack": {
+        "attack_duration": 0.8,
+        "attack_once": false,
+        "hit_delay_pct": 0.75,
+        "random_stop_interval": 0,
+        "melee_fov": 90,
+        "priority": 2,
+        "cooldown_time": 0.5,
+        "speed_multiplier": 1.8,
+        "reach_multiplier": 3.5,
+        "require_complete_path": true,
+        "can_spread_on_fire": true,
+        "track_target": true
+      },
+      "minecraft:behavior.swim_idle": {
+        "priority": 8,
+        "idle_time": 5.0,
+        "success_rate": 0.05
+      },
+      "minecraft:behavior.random_swim": {
+        "priority": 6,
+        "interval": 0,
+        "xz_dist": 30,
+        "y_dist": 15
+      },
+      "minecraft:behavior.random_stroll": {
+        "priority": 6,
+        "xz_dist": 10,
+        "y_dist": 10,
+        "interval": 100
+      },
+      "minecraft:behavior.look_at_player": {
+        "priority": 10,
+        "target_distance": 6.0,
+        "probability": 0.02
+      }
+    },
+
+    "events": {
+      "minecraft:entity_spawned": {
+        "sequence": [
+          {
+            "add": {
+              "component_groups": [
+                "komodo_adult"
+              ]
+            }
+          },
+          {
+            "randomize": [
+              {
+                "weight": 12,
+                "add": {
+                  "component_groups": [ "small_size" ]
+                }
+              },
+              {
+                "weight": 8,
+                "add": {
+                  "component_groups": [ "normal_size" ]
+                }
+              },
+              {
+                "weight": 2,
+                "add": {
+                  "component_groups": [ "giant" ]
+                }
+              }
+            ]
+          },
+          {
+            "randomize": [
+              {
+                "weight": 20,
+                "add": {
+                  "component_groups": [ "komodo_1" ]
+                }
+              },
+              {
+                "weight": 30,
+                "add": {
+                  "component_groups": [ "komodo_2" ]
+                }
+              },
+              {
+                "weight": 30,
+                "add": {
+                  "component_groups": [ "komodo_3" ]
+                }
+              },
+              {
+                "weight": 20,
+                "add": {
+                  "component_groups": [ "komodo_4" ]
+                }
+              },
+              {
+                "weight": 3,
+                "add": {
+                  "component_groups": [ "komodo_black" ]
+                }
+              },
+              {
+                "weight": 1,
+                "add": {
+                  "component_groups": [ "komodo_white" ]
+                }
+              },
+              {
+                "weight": 1,
+                "add": {
+                  "component_groups": [ "komodo_leucistic" ]
+                }
+              },
+              {
+                "weight": 1,
+                "add": {
+                  "component_groups": [ "komodo_albino" ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "minecraft:entity_born": {
+        "sequence": [
+          {
+            "remove": {
+              "component_groups": [
+                "komodo_adult"
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "komodo_baby"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "test": "has_component",
+              "operator": "!=",
+              "value": "minecraft:variant"
+            },
+            "add": { "component_groups": [ "komodo_black", "komodo_white", "komodo_leucistic", "komodo_albino" ] }
+          }
+        ]
+      },
+
+      "minecraft:baby_to_teen": {
+        "remove": { "component_groups": [ "komodo_baby" ] },
+        "add": { "component_groups": [ "komodo_sub_adult" ] }
+      },
+      "minecraft:teen_to_adult": {
+        "remove": { "component_groups": [ "komodo_sub_adult" ] },
+        "add": { "component_groups": [ "komodo_adult" ] }
+      },
+      "be_angry": {
+        "add": {
+          "component_groups": [
+            "angry"
+          ]
+        }
+      },
+
+      "be_calm": {
+        "remove": {
+          "component_groups": [
+            "angry"
+          ]
+        }
+      }
+    }
+  }
+}

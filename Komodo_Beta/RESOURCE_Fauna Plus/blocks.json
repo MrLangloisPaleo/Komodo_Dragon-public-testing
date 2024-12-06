@@ -1,0 +1,12 @@
+{
+	"marine_iguana_egg": {
+		"sound": "stone"
+	},
+	"steppe_grass": {
+		"carried_textures": "steppe_grass_carried.png",
+		"sound": "grass"
+	},
+	"giant_agave": {
+		"sound": "grass"
+	}
+}

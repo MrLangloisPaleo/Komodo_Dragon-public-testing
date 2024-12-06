@@ -1,0 +1,32 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Fauna Plus",
+		"description": "Fauna Plus Behavior Pack",
+		"uuid": "071a2c82-f5c2-4f20-94c4-87e2c7439afe",
+		"version": [1, 0, 0],
+		"min_engine_version": [1, 16, 0]
+	},
+	"metadata": {
+		"authors": ["Benjamin-León Reinoso-Langlois"],
+		"generated_with": {
+			"blockbench_entity_wizard": ["1.0.7", "1.6.0"],
+			"blockbench_block_wizard": ["1.2.2"],
+			"blockbench_item_wizard": ["1.1.0"]
+		}
+	},
+	"modules": [
+		{
+			"description": "Behavior",
+			"version": [1, 0, 0],
+			"uuid": "9093a5e8-6ba5-4c18-9bc1-e0a382f48e5d",
+			"type": "data"
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "b06d1daa-cd00-4d4c-9250-2e404e0217e8",
+			"version": [1, 0, 0]
+		}
+	]
+}

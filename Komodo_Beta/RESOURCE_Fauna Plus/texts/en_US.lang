@@ -1,0 +1,77 @@
+tile.ben:giant_agave.name=Giant Agave
+
+tile.ben:steppe_grass.name=Steppe Grass
+
+tile.ben:prickly_pear_cactus.name=Prickly Pear Cactus
+
+
+entity.ben:komodo.name=Komodo Dragon
+action.interact.mount.ben:komodo=Mount
+action.hint.exit.ben:komodo=Tap sneak to dismount
+item.spawn_egg.entity.ben:komodo.name=Spawn a Komodo Dragon
+
+entity.ben:dodo.name=Dodo
+action.interact.mount.ben:dodo=Mount
+action.hint.exit.ben:dodo=Tap sneak to dismount
+item.spawn_egg.entity.ben:dodo.name=Spawn a Dodo
+
+entity.ben:reef_squid.name=Reef Squid
+action.interact.mount.ben:reef_squid=Mount
+action.hint.exit.ben:reef_squid=Tap sneak to dismount
+item.spawn_egg.entity.ben:reef_squid.name=Spawn a Reef Squid
+
+entity.ben:silvasmilodon.name=Silvasmilodon fatalis
+action.interact.mount.ben:silvasmilodon=Mount
+action.hint.exit.ben:silvasmilodon=Tap sneak to dismount
+item.spawn_egg.entity.ben:silvasmilodon.name=Spawn a Silvasmilodon fatalis
+
+
+entity.ben:homotherium.name=Homotherium
+action.interact.mount.ben:homotherium=Mount
+action.hint.exit.ben:homotherium=Tap sneak to dismount
+item.spawn_egg.entity.ben:homotherium.name=Spawn a Homotherium
+
+
+
+entity.ben:african_cheetah.name=African Cheetah
+item.spawn_egg.entity.ben:african_cheetah.name=Spawn an African Cheetah
+
+entity.ben:arctic_wolf.name=Arctic Wolf
+item.spawn_egg.entity.ben:arctic_wolf.name=Spawn an Arctic Wolf
+
+entity.ben:nautilus.name=Nautilus
+item.spawn_egg.entity.ben:nautilus.name=Spawn a Nautilus
+
+
+entity.ben:mole.name=Mole
+item.spawn_egg.entity.ben:mole.name=Spawn a Mole
+
+
+entity.ben:albatros.name=Albatros
+item.spawn_egg.entity.ben:albatros.name=Spawn a Albatros
+
+
+entity.ben:haast_eagle.name=Haast's Eagle
+item.spawn_egg.entity.ben:haast_eagle.name=Spawn a Haast's Eagle
+
+entity.ben:bald_eagle.name=Bald Eagle
+item.spawn_egg.entity.ben:bald_eagle.name=Spawn a Bald Eagle
+
+entity.ben:steller_eagle.name=Steller's Sea Eagle
+item.spawn_egg.entity.ben:steller_eagle.name=Spawn a Steller's Sea Eagle
+
+entity.ben:golden_eagle.name=Golden Eagle
+item.spawn_egg.entity.ben:golden_eagle.name=Spawn a Golden Eagle
+tile.ben:_steppe_grass.name= steppe_grass
+item.ben:wood_spear=Wood spear
+entity.ben:megalonyx.name=Megalonyx
+item.spawn_egg.entity.ben:megalonyx.name=Spawn a Megalonyx
+entity.ben:marine_iguana.name=Marine Iguana
+item.spawn_egg.entity.ben:marine_iguana.name=Spawn a Marine Iguana
+tile.ben:marine_iguana_egg.name=Marine Iguana Egg
+entity.ben:dodo.name=Dodo
+item.spawn_egg.entity.ben:dodo.name=Spawn Dodo
+entity.ben:living_sponge.name=Living Sponge
+item.spawn_egg.entity.ben:living_sponge.name=Spawn a Living Sponge
+entity.ben:pallas.name=Pallas Cat
+item.spawn_egg.entity.ben:pallas.name=Spawn Pallas Cat
