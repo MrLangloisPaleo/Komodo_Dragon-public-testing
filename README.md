@@ -1,4 +1,4 @@
-Hy!
+Hi!
 Thank you for checking out my open public testing!
 
 To install the Addon:
